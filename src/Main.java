@@ -1,19 +1,12 @@
+import java.io.FileWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
+        ReadFile.readFile();
         MenuUI.showMenu();
-
-
-        try {
-            Files.lines(Paths.get("DataBase.txt"));
-
-        }catch(Exception e) {
-            System.out.println("Error, did not find tha database file " + e.getMessage());
-        }
-
 
         /*
 

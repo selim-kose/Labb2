@@ -40,6 +40,10 @@ public class Product {
         return price;
     }
 
+    public String csvFormat(){
+        return id +","+ name +","+brand +","+category+","+price;
+    }
+
     @Override
     public String toString() {
         return "Product{" +

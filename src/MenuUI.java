@@ -13,9 +13,10 @@ public class MenuUI {
                 
                 Welcome, please choose an option!
                 
-                1.Add a product
-                2.Remove product
-                3.Print all products
+                1.Add a product to stock
+                2.Remove product from stock
+                3.Print all products in stock
+                5.Create an order
                 4.Save
                 
                 e.Save and exit
@@ -27,18 +28,13 @@ public class MenuUI {
         String userInput = scanner.nextLine();
 
 
-
         switch (userInput) {
-            case "1": Logic.addProduct();
-                break;
-            case "2":
-                break;
-            case "3":Logic.printAllProducts();
-                break;
-            case "e":
-                break;
-            default:System.out.println("Wrong input, try again!");
-
+            case "1" -> Logic.addProduct();
+            case "2" -> Logic.removeProduct();
+            case "3" -> Logic.printAllProducts();
+            case "4" -> Logic.save();
+            case "e" -> Logic.saveAndExit();
+            default -> System.out.println("Wrong input, try again!");
         }
     }
 
