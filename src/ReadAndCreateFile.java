@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class ReadAndCreateFile {
 
-
     public static void createFile(String filename) {
         try {
 
@@ -20,21 +19,24 @@ public class ReadAndCreateFile {
     }
 
     public static void readFile() {
-        ArrayList<Product> tempList = new ArrayList<>();
+
 
         try {
             Files.lines(Paths.get("DataBase.txt"))
                     .map(line -> line.split(","))
                     .map(word -> new Product(Integer.valueOf(word[0]), word[1], word[2], word[3], Double.valueOf(word[4])))
-                    .forEach(product -> tempList.add(product));
+                    .forEach(product -> Logic.productList.add(product));
 
         } catch (Exception e) {
             System.out.println("kunde inte läsa filen" + e.getMessage());
         }
 
-        for (Product i : tempList) {
+        for (Product i : Logic.productList) {
             System.out.println(i);
         }
 
     }
+
+
+
 }

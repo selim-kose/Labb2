@@ -76,7 +76,10 @@ public class Logic {
             MenuUI.showMenu();
         }
 
+
+        System.out.println(productList.get(0));
         for (int i = 0; i < productList.size(); i++) {
+
             if (productList.get(i).getName().equals(inputChange)) {
                 System.out.print("Name >");
                 String inputName = scanner.nextLine();
@@ -89,35 +92,10 @@ public class Logic {
                 scanner.nextLine();
 
                 productList.set(i, new Product(0, inputName, inputBrand, inputCategory, inputPrice));
-            } else {
-                System.out.println("There is no product with the name: " + inputChange + "!!1");
             }
         }
 
     }
-
-
-     /*
-        for(Product i: productList){
-            if(i.getName().equals(inputChange)){
-                System.out.print("Name >");
-                String inputName = scanner.nextLine();
-                System.out.print("Brand >");
-                String inputBrand = scanner.nextLine();
-                System.out.print("Category >");
-                String inputCategory = scanner.nextLine();
-                System.out.print("Price >");
-                int inputPrice = scanner.nextInt();
-                scanner.nextLine();
-
-                productList.set(i.,new Product(0,inputName,inputBrand,inputCategory,inputPrice));
-            }else{
-                System.out.println("There is no product with the name: " + inputChange +"!!1");
-            }
-        }
-*/
-
-
 
     public static void printAllProducts() {
         if(!productList.isEmpty()){
