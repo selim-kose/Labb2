@@ -1,15 +1,11 @@
-import java.io.File;
+
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Logic {
-
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Product> productList = new ArrayList<>();
-
 
     public static void addProduct() {
 
@@ -29,16 +25,10 @@ public class Logic {
             int inputPrice = scanner.nextInt();
             scanner.nextLine();
 
-            // IDCounter funkar ej, försök lös varför den inte tickar upp eller google en ID lösning på nätet
-
-            int IDCounter = 0;
-            IDCounter++;
-
             //Adderar angivna inputs till en productobjekt som sedan läggs in i en array
-            productList.add(new Product(IDCounter, inputName, inputBrand, inputCategory, inputPrice));
+            productList.add(new Product(ReadAndCreateFile.generateID(), 1, inputName, inputBrand, inputCategory, inputPrice));
 
         }
-
     }
 
 
@@ -49,26 +39,30 @@ public class Logic {
         while (true) {
 
             System.out.println("What product do you want to remove, enter 'back' to go back?");
+            System.out.print("\nEnter here >");
             String inputRemove = scanner.nextLine();
 
             if (inputRemove.equals("back")) {
                 break;
             }
 
-            for (Product i : productList) {
-                if (i.getName().equals(inputRemove)) {
+            for (int i = 0; i < productList.size(); i++) {
+                if (productList.get(i).getName().equals(inputRemove)) {
+                    System.out.println("\n" + productList.get(i).getName() + " was removed from stock!\n");
                     productList.remove(i);
-                    System.out.println(inputRemove + " Was removed from the list");
-                } else {
-                    System.out.println("There is no product named " + inputRemove);
+                    break;
                 }
+
             }
+            System.out.println("\nThere is no product named " + inputRemove);
         }
     }
 
     public static void updateProduct() {
+
+
         System.out.println("What product do you want to update? Enter 'back to go back'");
-        System.out.print(">");
+        System.out.print("Enter here >");
 
         String inputChange = scanner.nextLine();
 
@@ -76,11 +70,14 @@ public class Logic {
             MenuUI.showMenu();
         }
 
-
-        System.out.println(productList.get(0));
         for (int i = 0; i < productList.size(); i++) {
 
             if (productList.get(i).getName().equals(inputChange)) {
+                System.out.print("ID >");
+                int inputID = scanner.nextInt();
+                System.out.print("Quantity >");
+                int inputQuantity = scanner.nextInt();
+                scanner.nextLine();
                 System.out.print("Name >");
                 String inputName = scanner.nextLine();
                 System.out.print("Brand >");
@@ -91,9 +88,12 @@ public class Logic {
                 int inputPrice = scanner.nextInt();
                 scanner.nextLine();
 
-                productList.set(i, new Product(0, inputName, inputBrand, inputCategory, inputPrice));
+                productList.set(i, new Product(inputID, inputQuantity, inputName, inputBrand, inputCategory, inputPrice));
+                break;
             }
+
         }
+        System.out.println(inputChange + " is not in stock");
     }
 
     public static void printAllProducts() {
@@ -110,7 +110,7 @@ public class Logic {
     public static void save() {
         try {
 
-            FileWriter writer = new FileWriter("DataBase.txt", true);
+            FileWriter writer = new FileWriter("DataBase.txt");
 
             for (Product i : productList) {
                 writer.write(i.csvFormat() + "\n");
@@ -127,3 +127,4 @@ public class Logic {
         System.exit(0);
     }
 }
+

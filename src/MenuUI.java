@@ -20,7 +20,7 @@ public class MenuUI {
                 3.Update a product in stock
                 4.Print all products in stock
                 5.Create an order
-                6.Save
+                6.Filter
                 
                 e.Save and exit
                 
@@ -37,7 +37,7 @@ public class MenuUI {
             case "3" -> Logic.updateProduct();
             case "4" -> Logic.printAllProducts();
             case "5" -> Order.createOrder();
-            case "6" -> Logic.save();
+            case "6" -> Filter.filterView();
             case "e" -> Logic.saveAndExit();
             default -> System.out.println("Wrong input, try again!");
         }

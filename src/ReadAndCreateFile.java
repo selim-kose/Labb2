@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class ReadAndCreateFile {
@@ -25,7 +24,7 @@ public class ReadAndCreateFile {
         try {
             Files.lines(Paths.get("DataBase.txt"))
                     .map(line -> line.split(","))
-                    .map(word -> new Product(Integer.valueOf(word[0]), word[1], word[2], word[3], Double.valueOf(word[4])))
+                    .map(word -> new Product(Integer.valueOf(word[0]),Integer.valueOf(word[1]), word[2], word[3], word[4], Double.valueOf(word[5])))
                     .forEach(product -> Logic.productList.add(product));
 
         } catch (IOException e) {
@@ -35,7 +34,20 @@ public class ReadAndCreateFile {
         for (Product i : Logic.productList) {
             System.out.println(i);
         }
+    }
 
+    public static int generateID(){
+        int lastID = Logic.productList.size()+1;
+        if(Logic.productList.isEmpty()){
+            return 1;
+        }
+
+
+        /*for (int i = 0; i < Logic.productList.size(); i++) {
+            lastID++;
+
+        }*/
+        return lastID;
     }
 
 
