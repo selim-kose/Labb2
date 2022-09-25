@@ -94,20 +94,17 @@ public class Logic {
                 productList.set(i, new Product(0, inputName, inputBrand, inputCategory, inputPrice));
             }
         }
-
     }
 
     public static void printAllProducts() {
-        if(!productList.isEmpty()){
+        if (!productList.isEmpty()) {
             for (Product i : productList) {
                 System.out.println(i);
             }
-
-        }else {
+        } else {
             System.out.println("\nStock is empty!");
             MenuUI.showMenu();
         }
-
     }
 
     public static void save() {
@@ -120,17 +117,13 @@ public class Logic {
             }
             writer.close();
 
-
         } catch (Exception e) {
             System.out.println("Error, did not find the database file " + e.getMessage());
         }
-
     }
 
     public static void saveAndExit() {
         save();
         System.exit(0);
     }
-
-
 }

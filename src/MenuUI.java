@@ -36,7 +36,7 @@ public class MenuUI {
             case "2" -> Logic.removeProduct();
             case "3" -> Logic.updateProduct();
             case "4" -> Logic.printAllProducts();
-            case "5" -> System.out.println("NA");
+            case "5" -> Order.createOrder();
             case "6" -> Logic.save();
             case "e" -> Logic.saveAndExit();
             default -> System.out.println("Wrong input, try again!");
