@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 public class Logic {
     static Scanner scanner = new Scanner(System.in);
-    static ArrayList<Product> productList = new ArrayList<>();
+    static ArrayList<Product> products = new ArrayList<>();
 
     public static void addProduct() {
 
         while (true) {
-            System.out.println("To add a product please give the following info, enter 'back' to go back");
+            System.out.println("To add a new product please give the following info, enter 'back' to go back");
 
             System.out.print("Name >");
             String inputName = scanner.nextLine();
@@ -26,7 +26,8 @@ public class Logic {
             scanner.nextLine();
 
             //Adderar angivna inputs till en productobjekt som sedan läggs in i en array
-            productList.add(new Product(ReadAndCreateFile.generateID(), 1, inputName, inputBrand, inputCategory, inputPrice));
+            System.out.println(inputName + " added to list");
+            products.add(new Product(ReadAndCreateFile.generateID(), 1, inputName, inputBrand, inputCategory, inputPrice));
 
         }
     }
@@ -46,10 +47,10 @@ public class Logic {
                 break;
             }
 
-            for (int i = 0; i < productList.size(); i++) {
-                if (productList.get(i).getName().equals(inputRemove)) {
-                    System.out.println("\n" + productList.get(i).getName() + " was removed from stock!\n");
-                    productList.remove(i);
+            for (int i = 0; i < products.size(); i++) {
+                if (products.get(i).getName().equals(inputRemove)) {
+                    System.out.println("\n" + products.get(i).getName() + " was removed from stock!\n");
+                    products.remove(i);
                     break;
                 }
 
@@ -70,9 +71,9 @@ public class Logic {
             MenuUI.showMenu();
         }
 
-        for (int i = 0; i < productList.size(); i++) {
+        for (int i = 0; i < products.size(); i++) {
 
-            if (productList.get(i).getName().equals(inputChange)) {
+            if (products.get(i).getName().equals(inputChange)) {
                 System.out.print("ID >");
                 int inputID = scanner.nextInt();
                 System.out.print("Quantity >");
@@ -88,7 +89,7 @@ public class Logic {
                 int inputPrice = scanner.nextInt();
                 scanner.nextLine();
 
-                productList.set(i, new Product(inputID, inputQuantity, inputName, inputBrand, inputCategory, inputPrice));
+                products.set(i, new Product(inputID, inputQuantity, inputName, inputBrand, inputCategory, inputPrice));
                 break;
             }
 
@@ -97,8 +98,8 @@ public class Logic {
     }
 
     public static void printAllProducts() {
-        if (!productList.isEmpty()) {
-            for (Product i : productList) {
+        if (!products.isEmpty()) {
+            for (Product i : products) {
                 System.out.println(i);
             }
         } else {
@@ -112,7 +113,7 @@ public class Logic {
 
             FileWriter writer = new FileWriter("DataBase.txt");
 
-            for (Product i : productList) {
+            for (Product i : products) {
                 writer.write(i.csvFormat() + "\n");
             }
             writer.close();

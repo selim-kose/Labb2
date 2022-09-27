@@ -33,7 +33,7 @@ public class Filter {
         System.out.println("What product category do want to see");
         String userInput = scanner.nextLine();
 
-        Logic.productList.stream()
+        Logic.products.stream()
                 .filter(product -> product.getCategory().equals(userInput))
                 .forEach(filteredProduct -> System.out.println(filteredProduct));
 
@@ -46,7 +46,7 @@ public class Filter {
         System.out.print("Max >");
         int inputMax = scanner.nextInt();
 
-        Logic.productList.stream()
+        Logic.products.stream()
                 .filter(product -> product.getPrice() > inputMin && product.getPrice() < inputMax)
                 .forEach(filteredProduct -> System.out.println(filteredProduct));
 
@@ -59,7 +59,7 @@ public class Filter {
         System.out.print("Max >");
         int inputMax = scanner.nextInt();
 
-        Logic.productList.stream()
+        Logic.products.stream()
                 .filter(product -> product.getQuantity() >inputMin && product.getQuantity() <inputMax)
                 .forEach(filteredProduct -> System.out.println(filteredProduct));
 

@@ -15,7 +15,7 @@ public class MenuUI {
                 Welcome, please choose an option below!
                 #######################################
                 
-                1.Add a product to stock
+                1.Add a new product to stock
                 2.Remove a product from stock
                 3.Update a product in stock
                 4.Print all products in stock

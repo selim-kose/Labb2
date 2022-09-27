@@ -23,34 +23,43 @@ public class Order {
                     ############################################\n
                      """);
 
-            for (Product i : Logic.productList) {
+            for (Product i : Logic.products) {
                 System.out.println(i);
             }
 
             System.out.print("\nEnter here >");
             int userInputID = scanner.nextInt();
-            System.out.println("\n");
+
 
             if (userInputID == 0) {
                 receipt();
+                MenuUI.showMenu();
             }
 
-
-            for (Product j : Logic.productList) {
-                if (userInputID == j.getId()) {
-                    order.add(j);
-                    System.out.println(j.getName() + " was added to your order!");
-                    break;
+            for (int i = 0; i < Logic.products.size(); i++) {
+                if (userInputID == Logic.products.get(i).getId()) {
+                    order.add(Logic.products.get(i));
+                    Logic.products.get(i).setQuantity(Logic.products.get(i).getQuantity() - 1);
+                    System.out.println(Logic.products.get(i).getName() + " was added to your order!");
+                    createOrder();
                 }
 
             }
             System.out.println("There is no product whit ID: '" + userInputID + "' , please try with another id.");
+
         }
     }
 
-
     public static void receipt() {
         double total = 0;
+
+        for (int i = 0; i < order.size(); i++) {
+            for (int j = 1; j < order.size(); j++) {
+                if (order.get(i).equals(order.get(j))) {
+                    order.get(i).setQuantity(order.get(i).getQuantity() + 1);
+                }
+            }
+        }
 
         for (Product i : order) {
             System.out.println(i.getName() + " " + i.getPrice() + "Kr");

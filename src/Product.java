@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Product {
 
     private int id;
@@ -22,6 +24,7 @@ public class Product {
         this.category = category;
         this.price = price;
     }
+
 
     public void setId(int id) {
         this.id = id;
@@ -73,6 +76,19 @@ public class Product {
 
     public String csvFormat() {
         return id + "," + quantity + "," + name + "," + brand + "," + category + "," + price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id && quantity == product.quantity && Double.compare(product.price, price) == 0 && Objects.equals(name, product.name) && Objects.equals(brand, product.brand) && Objects.equals(category, product.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, quantity, name, brand, category, price);
     }
 
     @Override
