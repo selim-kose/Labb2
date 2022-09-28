@@ -5,19 +5,25 @@ public class Filter {
     static Scanner scanner = new Scanner(System.in);
 
 
+
+    //Filter menyn där användaren väljer vad som ska filtreras
     public static void filterView() {
 
+        System.out.println();
         System.out.println("""
-                What bla bla do you want to filter, enter back to back?
+                What do you want to filter, enter back to back?
                 1.Category
                 2.Price
                 3.Quantity
                                 
                 """);
 
+        //Läser inte använderans val
         System.out.print("Enter here >");
         String userInput = scanner.nextLine();
 
+
+        //Beroende på vad användaren väljer i steget innan kallas rätt filtermetod
         switch (userInput) {
             case "1" -> filterCategory();
             case "2" -> filterPrice();
@@ -29,6 +35,9 @@ public class Filter {
 
     }
 
+
+    //Filtrerar ArrayListen products där producterna är sparade. Använderen väljer vilken kategori som ska visas
+    //som filtreras med en stream.
     public static void filterCategory() {
         System.out.println("What product category do want to see");
         String userInput = scanner.nextLine();
@@ -38,7 +47,8 @@ public class Filter {
                 .forEach(filteredProduct -> System.out.println(filteredProduct));
 
     }
-
+    //Filtrerar ArrayListen products där producterna är sparade. Använderen väljer vilken pris som ska visas
+    //som filtreras med en stream.
     public static void filterPrice() {
         System.out.println("Enter range");
         System.out.print("Min >");
@@ -52,6 +62,10 @@ public class Filter {
 
     }
 
+
+    //Filtrerar ArrayListen products där producterna är sparade. Använderen väljer vilka produkter som ska
+    // visas efter antal produkter.
+    //som filtreras med en stream.
     public static void filterQuantity(){
         System.out.println("Enter range");
         System.out.print("Min >");
