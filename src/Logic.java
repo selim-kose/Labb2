@@ -15,6 +15,22 @@ public class Logic {
         while (true) {
             System.out.println("\nTo add a new product please give the following info, enter 'back' to go back");
 
+            System.out.println("""
+                    Select Type:
+                    1. Food
+                    2. Clothes
+                    3. Electronics
+                    """);
+
+
+            System.out.println("Enter number to continue, enter back to go back");
+            String type = scanner.nextLine();
+            //scanner.nextLine();
+
+            if (type.equals("back")) {
+                break;
+            }
+
             System.out.print("Name >");
             String inputName = scanner.nextLine();
             if (inputName.equals("back")) {
@@ -30,11 +46,23 @@ public class Logic {
 
             //Adderar angivna inputs till en productobjekt som sedan läggs in i en array
             System.out.println(inputName + " added to list");
-            products.add(new Product(ReadAndCreateFile.generateID(), 1, inputName, inputBrand, inputCategory, inputPrice));
 
+            if (type.equals("1")) {
+
+                Food food = new Food(ReadAndCreateFile.generateID(), 1, inputName, inputBrand, inputCategory, inputPrice);
+                products.add(food);
+
+            } else if (type.equals("2")) {
+                Cloth cloth = new Cloth(ReadAndCreateFile.generateID(), 1, inputName, inputBrand, inputCategory, inputPrice);
+                products.add(cloth);
+
+            } else if (type.equals("3")) {
+                Electronic electronic = new Electronic(ReadAndCreateFile.generateID(), 1, inputName, inputBrand, inputCategory, inputPrice);
+                products.add(electronic);
+
+            }
         }
     }
-
 
     // metod för att ta port en produkt från listan. Användaren anger en String som går igenom listan.
     //vid träff tas den bort från ArrayList

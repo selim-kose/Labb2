@@ -32,13 +32,13 @@ public class ReadAndCreateFile {
                 //textfilen är tom
                 List<Product> starterProducts = new ArrayList<>();
 
-                starterProducts.add(new Product(1, 12, "banan", "chikita", "frukt", 5.0));
-                starterProducts.add(new Product(2, 5, "apelsin", "maroc", "frukt", 7.0));
-                starterProducts.add(new Product(3, 3, "yes", "svanen", "rengöring", 35.0));
-                starterProducts.add(new Product(4, 22, "snickers", "mars", "godis", 10.0));
-                starterProducts.add(new Product(5, 10, "kalsong", "gant", "kläder", 150.0));
-                starterProducts.add(new Product(6, 10, "tröja", "nike", "kläder", 800.0));
-
+                starterProducts.add(new Food(1, 12, "banana", "chikita", "fruit", 5.0));
+                starterProducts.add(new Food(2, 5, "orange", "maroc", "fruit", 7.0));
+                starterProducts.add(new Food(4, 22, "snickers", "mars", "candy", 10.0));
+                starterProducts.add(new Cloth(5, 10, "boxer", "gant", "underwear", 150.0));
+                starterProducts.add(new Cloth(6, 10, "sweater", "nike", "cloths", 800.0));
+                starterProducts.add(new Electronic(7, 4, "27LU650W", "LG", "display", 6000.0));
+                starterProducts.add(new Electronic(8, 6, "lightspeed", "logitech", "mouse", 800.0));
 
                 // skriver ner samtliga produkter i listan i CSV format.
                 for (Product i : starterProducts) {

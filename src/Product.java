@@ -10,12 +10,6 @@ public class Product {
     private String category;
     private double price;
 
-
-    public Product() {
-
-    }
-
-
     public Product(int id, int quantity, String name, String brand, String category, double price) {
         this.id = id;
         this.quantity = quantity;
@@ -89,6 +83,26 @@ public class Product {
     @Override
     public int hashCode() {
         return Objects.hash(id, quantity, name, brand, category, price);
+    }
+
+    public static void setDiscount(){
+        if(Order.total >=1000.0 && Order.total <= 1999.9) {
+            Order.total = Order.total * 0.9;
+            System.out.println("Discount 10%");
+        }else if(Order.total >=2000.0 && Order.total <=2999.9) {
+            Order.total = Order.total * 0.8;
+            System.out.println("Discount 20%");
+        }else if (Order.total >=3000.0 && Order.total <= 3999.9) {
+            Order.total = Order.total * 0.7;
+            System.out.println("Discount 30%");
+        }else if(Order.total >4000){
+            Order.total = Order.total * 0.6;
+            System.out.println("Discount 40%");
+
+        }
+
+
+
     }
 
     @Override

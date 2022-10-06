@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Order {
     private static List<Product> order = new ArrayList<>();
+    public static double total;
 
 
     public Order() {
@@ -14,8 +15,6 @@ public class Order {
     //metod som startat en order
     public static void createOrder() {
         Scanner scanner = new Scanner(System.in);
-
-
 
 
         while (true) {
@@ -68,7 +67,7 @@ public class Order {
 
     //Metod för att skapa ett kvitto
     public static void receipt() {
-        double total = 0; // håller koll på totalpriset
+        total = 0; // håller koll på totalpriset
 
 
 /*
@@ -86,7 +85,11 @@ public class Order {
             total += i.getPrice();
 
         }
+
+
+        Product.setDiscount();
         System.out.println("\nTotal: " + total + " Kr"); // skriver ut totalpriset
+        order.clear();
 
     }
 }

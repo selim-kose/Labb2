@@ -15,6 +15,7 @@ public class Filter {
                 1.Category
                 2.Price
                 3.Quantity
+                4.Product Type (Food, Cloth, Electronics)
                                 
                 """);
 
@@ -28,8 +29,35 @@ public class Filter {
             case "1" -> filterCategory();
             case "2" -> filterPrice();
             case "3" -> filterQuantity();
+            case "4" -> filterProductType();
             case "back" -> MenuUI.showMenu();
             default -> System.out.println("Wrong input!");
+        }
+
+
+    }
+
+
+    public static void filterProductType(){
+        System.out.println("""
+                1. Food
+                2. Cloth
+                3. Electronic
+                """);
+        int userInput = scanner.nextInt();
+
+        if(userInput==1){
+            Logic.products.stream()
+                    .filter(product -> product instanceof Food)
+                    .forEach(System.out::println);
+        }else if(userInput==2){
+            Logic.products.stream()
+                    .filter(product -> product instanceof Cloth)
+                    .forEach(System.out::println);
+        }else if(userInput==3){
+            Logic.products.stream()
+                    .filter(product -> product instanceof Electronic)
+                    .forEach(System.out::println);
         }
 
 
